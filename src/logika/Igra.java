@@ -8,7 +8,7 @@ import splosno.Koordinati;
 public class Igra {
 	protected char[][] board;
 	protected int dim;
-	protected Set<Koordinati> moznePoteze;
+	public Set<Koordinati> moznePoteze;
 	public char igralec;
 	public Stanje stanje;
 	public vrstaIgralca vrsta;

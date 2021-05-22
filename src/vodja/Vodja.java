@@ -1,6 +1,7 @@
 package vodja;
 
 import java.util.Random;
+import java.util.Set;
 import java.util.Map;
 import java.util.List;
 
@@ -34,46 +35,34 @@ public class Vodja {
 		case ZMAGA_O: 
 			return; 
 		case V_TEKU: 
-			Igralec igralec = igra.igralec;
-			VrstaIgralca vrstaNaPotezi = vrstaIgralca.get(igralec);
-			switch (vrstaNaPotezi) {
+			switch (igra.vrsta) {
 			case C: 
-				clovekNaVrsti = true;
+				clovekPoteza();
 				break;
 			case R:
-				igrajRacunalnikovoPotezo();
+				racunalnikPoteza();
 				break;
 			}
 		}
 	}
 	
 
-	public static void igrajRacunalnikovoPotezo() {
-		Igra zacetkaIgra = igra;
-		SwingWorker<Koordinati, Void> worker = new SwingWorker<Koordinati, Void> () {
-			@Override
-			protected Koordinati doInBackground() {
-				try {TimeUnit.SECONDS.sleep(2);} catch (Exception e) {};
-				List<Koordinati> moznePoteze = igra.poteze();
-				int randomIndex = random.nextInt(moznePoteze.size());
-				return moznePoteze.get(randomIndex);
-			}
-			@Override
-			protected void done () {
-				Koordinati poteza = null;
-				try {poteza = get();} catch (Exception e) {};
-				if (igra == zacetkaIgra) {
-					igra.odigraj(poteza);
-					igramo ();
-				}
-			}
-		};
-		worker.execute();
+	public static void racunalnikPoteza() {
+		Set<Koordinati> moznePoteze = igra.moznePoteze;
+		int size = moznePoteze.size();
+		int j = new Random().nextInt(size);
+		int i = 0;
+		Koordinati poteza;
+		for(Koordinati k : moznePoteze)
+		{
+			if (i == j)
+				poteza = k;
+			i++;
+		}
+		igra.odigrajPotezo(poteza); 
 	}
 		
-	public static void igrajClovekovoPotezo(Koordinati poteza) {
-		if (igra.odigraj(poteza)) clovekNaVrsti = false;
-		igramo ();
-	}
+	public static void clovekPoteza(Koordinati poteza) {
+
 
 }

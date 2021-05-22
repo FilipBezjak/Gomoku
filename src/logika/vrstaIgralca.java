@@ -1,5 +1,3 @@
 package logika;
 
-public class vrstaIgralca {
-
-}
+public enum vrstaIgralca { R, C; }

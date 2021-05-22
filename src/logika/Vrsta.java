@@ -1,3 +1,3 @@
 package logika;
 
-	enum Vrsta {R, C}
+	public enum Vrsta {R, C}

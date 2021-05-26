@@ -1,18 +1,25 @@
 package graficni;
 
 
+import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.EnumMap;
 
 import javax.swing.JButton;
+import javax.swing.JColorChooser;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+
+import logika.Igralec;
+import logika.VrstaIgralca;
 
 
 @SuppressWarnings("serial")
@@ -22,16 +29,19 @@ public class Frame extends JFrame implements ActionListener {
 	protected Panel panel;
 	private JMenuItem menuVelikost;
 	private JMenuItem menuIme;
-	private JMenuItem menuClovek;
+	private JMenuItem menuCR, menuClovek, menuRC, menuCC, menuRR;
 	private JMenuItem menuBarva;
 	private JMenuItem menuCas;
-	
+	private JButton izberiBarvo;
+	private JLabel aktivnaBarvaLabel;
+	private Color barva;
 	
 	public Frame() {
+		
 		super();
 		setTitle("Gomoku");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		panel = new Panel(800, 800, panel.cols, panel.rows);
+		panel = new Panel(500, 500, 15, 15); //panel = new Panel(800, 800, panel.cols, panel.rows)
 		add(panel);
 		
 		JMenuBar menubar = new JMenuBar();
@@ -39,16 +49,40 @@ public class Frame extends JFrame implements ActionListener {
 		
 		JMenu menuIgra = dodajMenu(menubar, "Lastnosti igre");
 		JMenu menuIgralec = dodajMenu(menubar, "Lastnosti igralca");
-		JMenu menuNastavitve = dodajMenu(menubar, "Lastnosti grafi�nega vmesnika");
+		JMenu menuNastavitve = dodajMenu(menubar, "Lastnosti grafičnega vmesnika");
 		
 		menuVelikost = dodajMenuItem(menuIgra,"Velikost");
 		menuIme = dodajMenuItem(menuIgralec,"Ime");
-		menuClovek = dodajMenuItem(menuIgralec,"�lovek ali ra�unalnik");
+		menuCR = dodajMenuItem(menuIgralec,"1. človek, 2. računalnik");
+		menuRC = dodajMenuItem(menuIgralec,"1. računalnik, 2. človek");
+		menuCC = dodajMenuItem(menuIgralec,"človek - človek");
+		menuRR = dodajMenuItem(menuIgralec,"računalnik - računalnik");
 		menuBarva = dodajMenuItem(menuNastavitve,"Barva kovanca");
-		menuCas = dodajMenuItem(menuNastavitve,"�as poteze");
+		menuCas = dodajMenuItem(menuNastavitve,"Čas poteze");
 		
 		
+		Color aktivnaBarva = Color.BLACK;
+		aktivnaBarvaLabel = new JLabel(" ");
+		aktivnaBarvaLabel.setOpaque(true);
+		aktivnaBarvaLabel.setBackground(aktivnaBarva);
+		setBarva(aktivnaBarva);
+		
+		
+		
+
+		
+
 	}
+	
+	public void setBarva(Color barva) {
+		this.barva = barva;
+		}
+	
+	public Color getBarva(Color barva) {
+		this.barva = barva;
+		return this.barva;
+		}
+
 	
 	public JMenu dodajMenu(JMenuBar menubar, String naslov) {
 		JMenu menu = new JMenu(naslov);
@@ -66,13 +100,44 @@ public class Frame extends JFrame implements ActionListener {
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		Object source = e.getSource();
-		if (source == menuVelikost) {
+		Object s = e.getSource();
+		if (s == menuVelikost) {
 			String stolpci = JOptionPane.showInputDialog(this, "Stolpci: ");
 			String vrstice = JOptionPane.showInputDialog(this, "Vrstice: ");
 			panel.setSize(Integer.parseInt(stolpci), Integer.parseInt(vrstice));
 		}
-	
-	
+		if (s == menuBarva) {
+			Color novaBarva = JColorChooser.showDialog(this,
+					"Izberite barvo", getBarva(barva));
+					if (novaBarva != null) {
+					setBarva(novaBarva);
+					aktivnaBarvaLabel.setBackground(novaBarva);
+			
+		}
+		// nastavimo ali igramo clovek vs racunalnik ipd... kopirano s predavanj
+		EnumMap<Igralec, VrstaIgralca> vrstaIgralca;
+		if (s.equals("menuCR")) {
+			vrstaIgralca = new EnumMap<Igralec,VrstaIgralca>(Igralec.class);
+			vrstaIgralca.put(Igralec.X, VrstaIgralca.C);
+			vrstaIgralca.put(Igralec.O, VrstaIgralca.R);			
 	}
+		if (s.equals("menuCC")) {
+			vrstaIgralca = new EnumMap<Igralec,VrstaIgralca>(Igralec.class);
+			vrstaIgralca.put(Igralec.X, VrstaIgralca.C);
+			vrstaIgralca.put(Igralec.O, VrstaIgralca.C);			
+	}		
+		if (s.equals("menuRR")) {
+		vrstaIgralca = new EnumMap<Igralec,VrstaIgralca>(Igralec.class);
+		vrstaIgralca.put(Igralec.X, VrstaIgralca.R);
+		vrstaIgralca.put(Igralec.O, VrstaIgralca.C);			
 }
+		if (s.equals("menuRC")) {
+			vrstaIgralca = new EnumMap<Igralec,VrstaIgralca>(Igralec.class);
+			vrstaIgralca.put(Igralec.X, VrstaIgralca.R);
+			vrstaIgralca.put(Igralec.O, VrstaIgralca.C);			
+	}
+		
+		
+	
+	
+}}}

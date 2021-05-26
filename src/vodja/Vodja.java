@@ -1,4 +1,5 @@
 package vodja;
+import logika.VrstaIgralca;
 
 import java.util.Random;
 import java.util.Set;
@@ -12,22 +13,25 @@ import graficni.Frame;
 import graficni.Panel;
 import logika.Igra;
 import logika.Stanje;
+import logika.VrstaIgralca;
 import logika.Igralec;
 import splosno.Koordinati;
 
 public class Vodja {
 	
-	public static Map<Igralec,VrstaIgralca> vrstaIgralca;
+	public static Map<Igralec, VrstaIgralca> vrstaIgralca;
 	public static Panel panel;
-	public static Igra igra = null;
+	public static Igra igra;
 	public static boolean clovekNaVrsti = false;
 	private static Random random = new Random ();
+	public static Koordinati clovekPoteza;
 	
-	public static void zacni () {
+	
+		public static void zacni () {
 		igra = new Igra ();
 		igra ();
 	}
-
+// vedno bo zacel X, nato v graficnem nastavimo, ali je x clovek ali racunalnik
 	public static void igra () {
 		switch (igra.stanje()) {
 		case NEODLOCENO:
@@ -35,9 +39,9 @@ public class Vodja {
 		case ZMAGA_O: 
 			return; 
 		case V_TEKU: 
-			switch (igra.vrsta) {
+			switch (igra.vrsta.R) {
 			case C: 
-				clovekPoteza();
+				clovekPoteza(clovekPoteza);
 				break;
 			case R:
 				racunalnikPoteza();
@@ -52,17 +56,23 @@ public class Vodja {
 		int size = moznePoteze.size();
 		int j = new Random().nextInt(size);
 		int i = 0;
-		Koordinati poteza;
+		Koordinati poteza = null; //na nekaj nastavimo
 		for(Koordinati k : moznePoteze)
 		{
 			if (i == j)
 				poteza = k;
 			i++;
 		}
-		igra.odigrajPotezo(poteza); 
+		igra.odigrajPotezo(poteza);
+
 	}
 		
 	public static void clovekPoteza(Koordinati poteza) {
+		Set<Koordinati> moznePoteze = igra.moznePoteze;
+		if (moznePoteze.contains(poteza)) {
+			igra.odigrajPotezo(poteza);
+		}
 
-
+	}
+	
 }

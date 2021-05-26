@@ -74,6 +74,8 @@ public class Panel extends JPanel implements MouseListener {
 		    Graphics2D g2 = (Graphics2D) g;
 		    g.setColor(Color.red);
 		    g.fillOval(CentralizirajX(x, 15, 500), CentralizirajY(y, 15, 500), 10, 10);
+		    //for neke v polje if polje[i][j]==x narises rdecega
+		    //else modrega
 		    mustDraw = false;
 		    
 
@@ -143,22 +145,7 @@ public class Panel extends JPanel implements MouseListener {
 		System.out.println(x + " " + y);
 		repaint();
 
-	}/*
-		
-		if //je na vrsti clovek) {
-			int x = e.getX();
-			int y = e.getY();
-			double velikost = velikostKvadratka();
-			int kvadrat_x = x /(int) velikost;
-			int kvadrat_y = y /(int) velikost;
-			double dovoljen_x = (x % (int) velikost) / velikost;
-			double dovoljen_y = (y % (int) velikost) / velikost;
-			if (0 < kvadrat_x && kvadrat_x < Igra.N && (0.5 * ROB) < dovoljen_x && dovoljen_x < (1 - (0.5 * ROB))
-					&& 0 < kvadrat_y && kvadrat_y < Igra.N && (0.5 * ROB) < dovoljen_y && dovoljen_y < (1 - (0.5 * ROB))) {
-				Vodja.igrajClovekovoPotezo(new Koordinati(kvadrat_x, kvadrat_y));
-			}
-		}
-		*/
+	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {

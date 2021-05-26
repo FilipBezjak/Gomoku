@@ -20,6 +20,7 @@ import javax.swing.JPanel;
 
 import logika.Igralec;
 import logika.VrstaIgralca;
+import vodja.Vodja;
 
 
 @SuppressWarnings("serial")
@@ -115,27 +116,26 @@ public class Frame extends JFrame implements ActionListener {
 			
 		}
 		// nastavimo ali igramo clovek vs racunalnik ipd... kopirano s predavanj
-		EnumMap<Igralec, VrstaIgralca> vrstaIgralca;
 		if (s.equals("menuCR")) {
-			vrstaIgralca = new EnumMap<Igralec,VrstaIgralca>(Igralec.class);
-			vrstaIgralca.put(Igralec.X, VrstaIgralca.C);
-			vrstaIgralca.put(Igralec.O, VrstaIgralca.R);			
+			Vodja.vrstaIgralca = new EnumMap<Igralec,VrstaIgralca>(Igralec.class);
+			Vodja.Vodja.vrstaIgralca.put(Igralec.X, VrstaIgralca.C);
+			Vodja.vrstaIgralca.put(Igralec.O, VrstaIgralca.R);			
 	}
 		if (s.equals("menuCC")) {
-			vrstaIgralca = new EnumMap<Igralec,VrstaIgralca>(Igralec.class);
-			vrstaIgralca.put(Igralec.X, VrstaIgralca.C);
-			vrstaIgralca.put(Igralec.O, VrstaIgralca.C);			
+			Vodja.vrstaIgralca = new EnumMap<Igralec,VrstaIgralca>(Igralec.class);
+			Vodja.vrstaIgralca.put(Igralec.X, VrstaIgralca.C);
+			Vodja.vrstaIgralca.put(Igralec.O, VrstaIgralca.C);			
 	}		
 		if (s.equals("menuRR")) {
-		vrstaIgralca = new EnumMap<Igralec,VrstaIgralca>(Igralec.class);
-		vrstaIgralca.put(Igralec.X, VrstaIgralca.R);
-		vrstaIgralca.put(Igralec.O, VrstaIgralca.C);			
+			Vodja.vrstaIgralca = new EnumMap<Igralec,VrstaIgralca>(Igralec.class);
+			Vodja.vrstaIgralca.put(Igralec.X, VrstaIgralca.R);
+			Vodja.vrstaIgralca.put(Igralec.O, VrstaIgralca.C);			
 }
 		if (s.equals("menuRC")) {
-			vrstaIgralca = new EnumMap<Igralec,VrstaIgralca>(Igralec.class);
-			vrstaIgralca.put(Igralec.X, VrstaIgralca.R);
-			vrstaIgralca.put(Igralec.O, VrstaIgralca.C);			
-	}
+			Vodja.vrstaIgralca = new EnumMap<Igralec,VrstaIgralca>(Igralec.class);
+			Vodja.vrstaIgralca.put(Igralec.X, VrstaIgralca.R);
+			Vodja.vrstaIgralca.put(Igralec.O, VrstaIgralca.C);			
+	}//v vodji nastavi igralca in vrsto
 		
 		
 	

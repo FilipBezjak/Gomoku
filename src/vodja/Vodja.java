@@ -34,12 +34,20 @@ public class Vodja {
 // vedno bo zacel X, nato v graficnem nastavimo, ali je x clovek ali racunalnik
 	public static void igra () {
 		switch (igra.stanje()) {
-		case NEODLOCENO:
-		case ZMAGA_X: 
-		case ZMAGA_O: 
-			return; 
+			case NEODLOCENO:
+				System.out.println("Neodloceno");
+				break;
+			case ZMAGA_X: 
+				System.out.println("Zmagal je igralec X");
+				break;
+			case ZMAGA_O: 
+				System.out.println("Zmagal je igralec O");
+				break; 
 		case V_TEKU: 
-			switch (igra.vrsta.R) {
+			Igralec igralec = igra.igralec;
+			VrstaIgralca vrstaNaPotezi = vrstaIgralca.get(igralec);
+			Koordinati poteza = null;
+			switch (vrstaNaPotezi) {
 			case C: 
 				clovekPoteza(clovekPoteza);
 				break;

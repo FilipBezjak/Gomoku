@@ -81,7 +81,27 @@ public class Vodja {
 	
 	public static Inteligenca pametnaPoteza = new Minimax(5);
 	
-	//public static void igrajPametno()
+	public static void igrajPametno() {
+		Igra zacetkaIgra = igra;
+		SwingWorker<Koordinati, Void> worker = new SwingWorker<Koordinati, Void> () {
+			@Override
+			protected Koordinati doInBackground() {
+				Koordinati poteza = racunalnikovaInteligenca.izberiPotezo(igra);
+				try {TimeUnit.SECONDS.sleep(1);} catch (Exception e) {};
+				return poteza;
+			}
+			@Override
+			protected void done () {
+				Koordinati poteza = null;
+				try {poteza = get();} catch (Exception e) {};
+				if (igra == zacetkaIgra) {
+					igra.odigraj(poteza);
+					igramo ();
+				}
+			}
+		};
+	worker.execute();
+	}
 		
 	public static void clovekPoteza(Koordinati poteza) {
 		Set<Koordinati> moznePoteze = igra.moznePoteze;

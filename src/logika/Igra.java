@@ -37,10 +37,6 @@ public class Igra {
 	}
 	
 	
-	public Igra(Igra igra) {
-		// TODO Auto-generated constructor stub
-	}
-	
 
 	public boolean odigrajPotezo(Koordinati k) {
 		if (moznePoteze.contains(k)) {
@@ -99,6 +95,16 @@ public class Igra {
 		}
 		return Polje.PRAZNO;
 	}
+	
+	public Igra(Igra igra) {
+		this.board = new Polje[dim][dim];
+		for (int i = 0; i < dim; i++) {
+		for (int j = 0; j < dim; j++) {
+		this.board[i][j] = igra.board[i][j];
+		}
+		}
+		this.igralec = igra.igralec;
+		}
 	
 	public Polje ZmagaStolpec(Koordinati k) {
 		int j = 0;

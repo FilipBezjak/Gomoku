@@ -22,7 +22,7 @@ public class Igra {
 		moznePoteze = new HashSet<Koordinati>();
 		stanje = Stanje.V_TEKU;
 		vrsta = VrstaIgralca.C;
-		igralec = igralec.X; //na primer da X zacne
+		igralec = Igralec.X; //na primer da X zacne
 		for (int i = 0; i < dim; i++) {
 			for (int j = 0; j < dim; j++) {
 				board[i][j] = Polje.PRAZNO;
@@ -43,6 +43,8 @@ public class Igra {
 		if (moznePoteze.contains(k)) {
 			moznePoteze.remove(k);
 			board[k.getX()][k.getY()] = igralec.getPolje();
+			preveriZmago(k);
+			igralec.nasprotnik();
 			return true;
 		}
 		return false;
@@ -99,12 +101,12 @@ public class Igra {
 	
 	public Igra(Igra igra) {
 		this.board = new Polje[dim][dim];
-		for (int i = 0; i < dim; i++) {
-		for (int j = 0; j < dim; j++) {
-		this.board[i][j] = igra.board[i][j];
-		}
-		}
-		this.igralec = igra.igralec;
+			for (int i = 0; i < dim; i++) {
+				for (int j = 0; j < dim; j++) {
+					this.board[i][j] = igra.board[i][j];
+				}
+			}
+			this.igralec = igra.igralec;
 		}
 	
 	public Polje ZmagaStolpec(Koordinati k) {

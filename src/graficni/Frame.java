@@ -118,11 +118,7 @@ public class Frame extends JFrame implements ActionListener {
 		// nastavimo ali igramo clovek vs racunalnik ipd... kopirano s predavanj
 		if (s.equals("menuCR")) {
 			Vodja.vrstaIgralca = new EnumMap<Igralec,VrstaIgralca>(Igralec.class);
-<<<<<<< HEAD
-			Vodja.vrstaIgralca.put(Igralec.X, VrstaIgralca.C);
-=======
 			//Vodja.Vodja.vrstaIgralca.put(Igralec.X, VrstaIgralca.C);
->>>>>>> branch 'master' of https://github.com/FilipBezjak/Gomoku.git
 			Vodja.vrstaIgralca.put(Igralec.O, VrstaIgralca.R);			
 	}
 		if (s.equals("menuCC")) {

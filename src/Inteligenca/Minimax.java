@@ -20,10 +20,10 @@ public class Minimax extends Inteligenca{
 	}
 	
 	@Override
-	public Koordinati izberiPotezo (Igra igra) {
-		OcenjenaPoteza najboljsaPoteza = minimax(igra, this.globina, igra.naPotezi());
-		return najboljsaPoteza.poteza;	
-	}
+	//public Koordinati izberiPotezo (Igra igra) {
+		//OcenjenaPoteza najboljsaPoteza = minimax(igra, this.globina, igra.naPotezi());
+		//return najboljsaPoteza.poteza;	
+	//}
 	
 	// vrne najboljso ocenjeno potezo z vidike igralca jaz
 	public OcenjenaPoteza minimax(Igra igra, int globina, Igralec jaz) {

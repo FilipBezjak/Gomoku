@@ -77,9 +77,9 @@ public class Vodja {
 
 	}
 	
-	public static Inteligenca pametnaPoteza = new Minimax(5);
+	//public static Inteligenca pametnaPoteza = new Minimax(5);
 	
-	public static void igrajPametno() {
+	/*public static void igrajPametno() {
 		Igra zacetkaIgra = igra;
 		SwingWorker<Koordinati, Void> worker = new SwingWorker<Koordinati, Void> () {
 			@Override
@@ -100,6 +100,7 @@ public class Vodja {
 		};
 	worker.execute();
 	}
+	*/
 		
 	public static void clovekPoteza(Koordinati poteza) {
 		Set<Koordinati> moznePoteze = igra.moznePoteze;

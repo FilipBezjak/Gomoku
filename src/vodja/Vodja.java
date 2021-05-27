@@ -35,25 +35,19 @@ public class Vodja {
 		igra = new Igra ();
 		igra ();
 	}
+		
 // vedno bo zacel X, nato v graficnem nastavimo, ali je x clovek ali racunalnik
 	public static void igra () {
 		switch (igra.stanje()) {
-			case NEODLOCENO:
-				System.out.println("Neodloceno");
-				break;
-			case ZMAGA_X: 
-				System.out.println("Zmagal je igralec X");
-				break;
-			case ZMAGA_O: 
-				System.out.println("Zmagal je igralec O");
-				break; 
+		case NEODLOCENO:
+		case ZMAGA_X: 
+		case ZMAGA_O: 
+			return; 
 		case V_TEKU: 
-			Igralec igralec = igra.igralec;
-			VrstaIgralca vrstaNaPotezi = vrstaIgralca.get(igralec);
-			Koordinati poteza = null;
-			switch (vrstaNaPotezi) {
+			System.out.println(igra.vrsta);
+			switch (igra.vrsta) {
 			case C: 
-				clovekPoteza(clovekPoteza);
+				clovekPoteza(Panel.clovekPoteza);
 				break;
 			case R:
 				racunalnikPoteza();
@@ -71,8 +65,12 @@ public class Vodja {
 		Koordinati poteza = null; //na nekaj nastavimo
 		for(Koordinati k : moznePoteze)
 		{
-			if (i == j)
+			if (i == j) {
 				poteza = k;
+
+				
+			}
+				
 			i++;
 		}
 		igra.odigrajPotezo(poteza);

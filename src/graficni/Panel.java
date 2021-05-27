@@ -221,5 +221,3 @@ public class Panel extends JPanel implements MouseListener {
 		
 	}
 		}
-	
-	

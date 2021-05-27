@@ -44,8 +44,10 @@ public class Vodja {
 		case ZMAGA_O: 
 			return; 
 		case V_TEKU: 
+			Igralec igralec = igra.igralec;
+			VrstaIgralca vrsta = vrstaIgralca.get(igralec);
 			System.out.println(igra.vrsta);
-			switch (igra.vrsta) {
+			switch (vrsta) {
 			case C: 
 				clovekPoteza(Panel.clovekPoteza);
 				break;

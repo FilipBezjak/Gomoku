@@ -192,7 +192,6 @@ public class Panel extends JPanel implements MouseListener {
 		//Vodja.clovekPoteza(new Koordinati((pretvoriKoordinatoX(x, 15, 500)), pretvoriKoordinatoY(y, 15, 500)));
 		//mustDraw = true;
 		Vodja.igra();
-		Vodja.igra();
 		repaint();
 
 	}

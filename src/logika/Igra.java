@@ -20,8 +20,9 @@ public class Igra {
 		this.dim = dim;
 		board = new Polje[dim][dim];
 		moznePoteze = new HashSet<Koordinati>();
-		this.stanje = Stanje.V_TEKU;
-		this.igralec = igralec;
+		stanje = Stanje.V_TEKU;
+		vrsta = VrstaIgralca.C;
+		igralec = igralec.X; //na primer da X zacne
 		for (int i = 0; i < dim; i++) {
 			for (int j = 0; j < dim; j++) {
 				board[i][j] = Polje.PRAZNO;
@@ -130,5 +131,3 @@ public class Igra {
 	
 	// odigraj
 }
-
-

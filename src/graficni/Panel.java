@@ -14,12 +14,24 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import logika.Igra;
+import logika.Igralec;
+import logika.Polje;
+import logika.Stanje;
+import logika.Vrsta;
+import logika.VrstaIgralca;
 import splosno.Koordinati;
 import vodja.Vodja;
 
 public class Panel extends JPanel implements MouseListener {
 	
-	protected Igra igra;
+	protected static Igra igra;
+	public static VrstaIgralca vrsta;
+	public static Koordinati clovekPoteza;
+	
+	
+	
+	protected int dim = 15;
+	public static Igralec igralec;
 	  int width, height;
 
 	  int rows;
@@ -39,6 +51,15 @@ public class Panel extends JPanel implements MouseListener {
 		
 		
 	}
+	
+	public static void setIgra() {
+		igra = Vodja.igra;
+		igralec = igra.igralec;
+		vrsta = igra.vrsta;
+		clovekPoteza = Vodja.clovekPoteza;
+	}
+	
+	
 	
 	
 	 public void GridsCanvas(int w, int h, int r, int c) {
@@ -63,21 +84,38 @@ public class Panel extends JPanel implements MouseListener {
 		    int rowWid = width / (cols);
 		    for (i = 0; i < cols; i++) {
 		      g.drawLine(i * rowWid, 0, i * rowWid, height);
-		      	System.out.println(i * rowWid + " " + 0 + " " + i * rowWid + " " + height);
 		    }
 		    
 		    
+		    Graphics2D g2 = (Graphics2D) g;
+		    for (int k = 0; k < dim; k++) {
+		    	for (int l = 0; l < dim; l++) {
+		    		if (igra.board[k][l] == Polje.X) {
+		    			 g2.setColor(Color.red);
+		    			 g2.fillOval(CentralizirajX(x, 15, 500), CentralizirajY(y, 15, 500), 10, 10);
+		    			 igra.igralec = igralec.O;
+		    			 igra.vrsta = VrstaIgralca.R;
 
+		    		}
+		    		else if (igra.board[k][l] == Polje.O) {
+		    			g2.setColor(Color.blue);
+		    			g2.fillOval(pretvoriRacunalnik(k, 15, 500), pretvoriRacunalnik(l, 15, 500), 10, 10);
+		    			igra.igralec = igralec.X;
+		    			igra.vrsta = VrstaIgralca.C;
+		    		}
+		    	}
+		    }
+		    
+		    
+/*
 		    
 		    //narisi "O"
 		    if(!mustDraw) return;
 		    Graphics2D g2 = (Graphics2D) g;
 		    g.setColor(Color.red);
 		    g.fillOval(CentralizirajX(x, 15, 500), CentralizirajY(y, 15, 500), 10, 10);
-		    //for neke v polje if polje[i][j]==x narises rdecega
-		    //else modrega
 		    mustDraw = false;
-		    
+		    */
 
 		  }
 	  //postavi zeton na sredino kvadratka
@@ -134,15 +172,26 @@ public class Panel extends JPanel implements MouseListener {
 		return 0;
 		
 }
+	
+	public int pretvoriRacunalnik(int x, int cols, int w) {
+		for (int i = 0; i < cols; i++) {
+			if (x < i) {
+				x = ((2*i - 1) * (w / cols)) / 2;
+				return x;
+			}
+		}
+		return 0;
+	}
 
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		x = e.getX();
 		y = e.getY();	
-		Vodja.clovekPoteza(new Koordinati((pretvoriKoordinatoX(x, 15, 500)), pretvoriKoordinatoY(y, 15, 500)));
-		mustDraw = true;
-		System.out.println(x + " " + y);
+		clovekPoteza = (new Koordinati((pretvoriKoordinatoX(x, 15, 500)), pretvoriKoordinatoY(y, 15, 500)));
+		//Vodja.clovekPoteza(new Koordinati((pretvoriKoordinatoX(x, 15, 500)), pretvoriKoordinatoY(y, 15, 500)));
+		//mustDraw = true;
+		Vodja.igra();
 		repaint();
 
 	}
@@ -172,5 +221,3 @@ public class Panel extends JPanel implements MouseListener {
 		
 	}
 		}
-	
-	

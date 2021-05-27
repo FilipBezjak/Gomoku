@@ -23,8 +23,11 @@ public class Test {
 		frame.setVisible(true);
 		
 		Vodja.zacni();
+		
+		Panel.setIgra();
 
 
-	}
 
+	
+}
 }

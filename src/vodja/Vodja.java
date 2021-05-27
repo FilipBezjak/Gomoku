@@ -7,6 +7,10 @@ import java.util.Map;
 import java.util.List;
 
 import javax.swing.SwingWorker;
+
+import Inteligenca.Inteligenca;
+import Inteligenca.Minimax;
+
 import java.util.concurrent.TimeUnit;
 
 import graficni.Frame;
@@ -74,6 +78,10 @@ public class Vodja {
 		igra.odigrajPotezo(poteza);
 
 	}
+	
+	public static Inteligenca pametnaPoteza = new Minimax(5);
+	
+	//public static void igrajPametno()
 		
 	public static void clovekPoteza(Koordinati poteza) {
 		Set<Koordinati> moznePoteze = igra.moznePoteze;

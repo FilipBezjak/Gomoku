@@ -37,6 +37,11 @@ public class Igra {
 	}
 	
 	
+	public Igra(Igra igra) {
+		// TODO Auto-generated constructor stub
+	}
+	
+
 	public boolean odigrajPotezo(Koordinati k) {
 		if (moznePoteze.contains(k)) {
 			moznePoteze.remove(k);

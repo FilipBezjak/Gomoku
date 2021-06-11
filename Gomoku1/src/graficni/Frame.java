@@ -36,8 +36,8 @@ public class Frame extends JFrame implements ActionListener {
 	
 	public Igra igra;
 	
-	public static boolean clovekClovek; // doloèa kdaj je igra èlovek vs èlovek
-	public static boolean racunalnikRacunalnik; // doloèa kdaj je igra raè vs raè
+	public static boolean clovekClovek; // doloca kdaj je igra clovek vs clovek
+	public static boolean racunalnikRacunalnik; // doloca kdaj je igra rac vs rac
 	
 	
 	public Frame(Igra igra) {
@@ -56,15 +56,15 @@ public class Frame extends JFrame implements ActionListener {
 		
 		JMenu menuIgra = dodajMenu(menubar, "Lastnosti igre");
 		JMenu menuIgralec = dodajMenu(menubar, "Lastnosti igralca");
-		JMenu menuNastavitve = dodajMenu(menubar, "Lastnosti grafiènega vmesnika");
+		JMenu menuNastavitve = dodajMenu(menubar, "Lastnosti grafiÃ¨nega vmesnika");
 		
 		menuVelikost = dodajMenuItem(menuIgra,"Velikost");
 		menuIme = dodajMenuItem(menuIgralec,"Ime");
-		menuClovekClovek = dodajMenuItem(menuIgralec,"Èlovek proti èloveku");
-		menuClovekRacunalnik = dodajMenuItem(menuIgralec,"Èlovek proti raèunalnik");
-		menuRacunalnikRacunalnik = dodajMenuItem(menuIgralec,"Raèunalnik proti raèunalnik");
+		menuClovekClovek = dodajMenuItem(menuIgralec,"ÄŒovek proti Ã¨loveku");
+		menuClovekRacunalnik = dodajMenuItem(menuIgralec,"ÄŒovek proti raÃ¨unalnik");
+		menuRacunalnikRacunalnik = dodajMenuItem(menuIgralec,"RaÄunalnik proti raÄunalnik");
 		menuBarva = dodajMenuItem(menuNastavitve,"Barva kovanca");
-		menuCas = dodajMenuItem(menuNastavitve,"Èas poteze");
+		menuCas = dodajMenuItem(menuNastavitve,"ÄŒas poteze");
 		
 		
 		Color aktivnaBarva = Color.RED;

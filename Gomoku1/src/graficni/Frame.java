@@ -56,12 +56,12 @@ public class Frame extends JFrame implements ActionListener {
 		
 		JMenu menuIgra = dodajMenu(menubar, "Lastnosti igre");
 		JMenu menuIgralec = dodajMenu(menubar, "Lastnosti igralca");
-		JMenu menuNastavitve = dodajMenu(menubar, "Lastnosti grafiènega vmesnika");
+		JMenu menuNastavitve = dodajMenu(menubar, "Lastnosti grafičnega vmesnika");
 		
 		menuVelikost = dodajMenuItem(menuIgra,"Velikost");
 		menuIme = dodajMenuItem(menuIgralec,"Ime");
-		menuClovekClovek = dodajMenuItem(menuIgralec,"Čovek proti èloveku");
-		menuClovekRacunalnik = dodajMenuItem(menuIgralec,"Čovek proti raèunalnik");
+		menuClovekClovek = dodajMenuItem(menuIgralec,"Človek proti človeku");
+		menuClovekRacunalnik = dodajMenuItem(menuIgralec,"Človek proti računalnik");
 		menuRacunalnikRacunalnik = dodajMenuItem(menuIgralec,"Računalnik proti računalnik");
 		menuBarva = dodajMenuItem(menuNastavitve,"Barva kovanca");
 		menuCas = dodajMenuItem(menuNastavitve,"Čas poteze");
